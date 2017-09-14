@@ -1,0 +1,17 @@
+collector1.sources = src1
+collector1.channels = ch1
+collector1.sinks = sink1
+
+collector1.sources.src1.type = avro
+collector1.sources.src1.bind = horse
+collector1.sources.src1.port = 6000
+collector1.sources.src1.channels = ch1
+
+collector1.channels.ch1.type = memory
+collector1.channels.ch1.capacity = 500
+
+collector1.sinks.sink1.type = hdfs
+collector1.sinks.sink1.hdfs.path = hdfs://elephant/user/flume/collector1
+collector1.sinks.sink1.hdfs.filePrefix = access_log
+collector1.sinks.sink1.channel = ch1
+

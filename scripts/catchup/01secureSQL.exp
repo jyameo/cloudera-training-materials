@@ -1,0 +1,11 @@
+#!/usr/bin/expect
+spawn ./01secureSQL.sh
+sleep 2
+expect -re ".*" { send "\r"}
+expect -re "Set root password*" { send "Y\r"}
+expect -re "New password*" { send "training\r"}
+expect -re "Re-enter new password*" { send "training\r"}
+expect -re "Remove anonymous user*" { send "Y\r"} 
+expect -re "Disallow root login remotely*" { send "Y\r"} 
+expect -re "Remove test database and access to it*" { send "Y\r"} 
+expect -re "Reload privilege tables now*" { send "Y\r"} 

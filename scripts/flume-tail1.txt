@@ -1,0 +1,16 @@
+tail1.sources = src1
+tail1.channels = ch1
+tail1.sinks = sink1
+
+tail1.sources.src1.type = exec
+tail1.sources.src1.command = tail -F /tmp/access_log
+tail1.sources.src1.channels = ch1
+
+tail1.channels.ch1.type = memory
+tail1.channels.ch1.capacity = 500
+
+tail1.sinks.sink1.type = avro
+tail1.sinks.sink1.hostname = horse
+tail1.sinks.sink1.port = 6000
+tail1.sinks.sink1.batch-size = 1
+tail1.sinks.sink1.channel = ch1
